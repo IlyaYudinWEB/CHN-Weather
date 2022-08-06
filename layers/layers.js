@@ -1,6 +1,6 @@
 var wms_layers = [];
 
-var lyr_LandSurfaceReflectanceTrueColorMODISTerra_0 = new ol.layer.Tile({
+var lyr_MODISTerra_0 = new ol.layer.Tile({
                             source: new ol.source.TileWMS(({
                               url: "https://gibs.earthdata.nasa.gov/wms/epsg4326/best/wms.cgi",
     attributions: ' ',
@@ -9,47 +9,32 @@ var lyr_LandSurfaceReflectanceTrueColorMODISTerra_0 = new ol.layer.Tile({
                                 "TILED": "true",
                                 "VERSION": "1.3.0"},
                             })),
-                            title: "Land Surface Reflectance (True Color, MODIS, Terra)",
+                            title: "MODIS, Terra",
                             opacity: 1.000000,
                             
                             
                           });
-              wms_layers.push([lyr_LandSurfaceReflectanceTrueColorMODISTerra_0, 0]);
-var lyr_LandSurfaceReflectanceTrueColorMODISAqua_1 = new ol.layer.Tile({
-                            source: new ol.source.TileWMS(({
-                              url: "https://gibs.earthdata.nasa.gov/wms/epsg4326/best/wms.cgi",
-    attributions: ' ',
-                              params: {
-                                "LAYERS": "MODIS_Aqua_SurfaceReflectance_Bands143",
-                                "TILED": "true",
-                                "VERSION": "1.3.0"},
-                            })),
-                            title: "Land Surface Reflectance (True Color, MODIS, Aqua)",
-                            opacity: 1.000000,
-                            
-                            
-                          });
-              wms_layers.push([lyr_LandSurfaceReflectanceTrueColorMODISAqua_1, 0]);
-var format_AOINEW_TASK1_region_2 = new ol.format.GeoJSON();
-var features_AOINEW_TASK1_region_2 = format_AOINEW_TASK1_region_2.readFeatures(json_AOINEW_TASK1_region_2, 
+              wms_layers.push([lyr_MODISTerra_0, 0]);
+var format_AOITasking_1 = new ol.format.GeoJSON();
+var features_AOITasking_1 = format_AOITasking_1.readFeatures(json_AOITasking_1, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_AOINEW_TASK1_region_2 = new ol.source.Vector({
+var jsonSource_AOITasking_1 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_AOINEW_TASK1_region_2.addFeatures(features_AOINEW_TASK1_region_2);
-var lyr_AOINEW_TASK1_region_2 = new ol.layer.Vector({
+jsonSource_AOITasking_1.addFeatures(features_AOITasking_1);
+var lyr_AOITasking_1 = new ol.layer.Vector({
                 declutter: true,
-                source:jsonSource_AOINEW_TASK1_region_2, 
-                style: style_AOINEW_TASK1_region_2,
+                source:jsonSource_AOITasking_1, 
+                style: style_AOITasking_1,
                 interactive: true,
-                title: '<img src="styles/legend/AOINEW_TASK1_region_2.png" /> AOI-NEW_TASK1_region'
+                title: '<img src="styles/legend/AOITasking_1.png" /> AOI-Tasking'
             });
 
-lyr_LandSurfaceReflectanceTrueColorMODISTerra_0.setVisible(true);lyr_LandSurfaceReflectanceTrueColorMODISAqua_1.setVisible(true);lyr_AOINEW_TASK1_region_2.setVisible(true);
-var layersList = [lyr_LandSurfaceReflectanceTrueColorMODISTerra_0,lyr_LandSurfaceReflectanceTrueColorMODISAqua_1,lyr_AOINEW_TASK1_region_2];
-lyr_AOINEW_TASK1_region_2.set('fieldAliases', {'ID': 'ID', 'AREA': 'AREA', });
-lyr_AOINEW_TASK1_region_2.set('fieldImages', {'ID': 'TextEdit', 'AREA': 'TextEdit', });
-lyr_AOINEW_TASK1_region_2.set('fieldLabels', {'ID': 'no label', 'AREA': 'inline label', });
-lyr_AOINEW_TASK1_region_2.on('precompose', function(evt) {
+lyr_MODISTerra_0.setVisible(true);lyr_AOITasking_1.setVisible(true);
+var layersList = [lyr_MODISTerra_0,lyr_AOITasking_1];
+lyr_AOITasking_1.set('fieldAliases', {'ID': 'ID', 'AREA': 'AREA', });
+lyr_AOITasking_1.set('fieldImages', {'ID': 'TextEdit', 'AREA': 'TextEdit', });
+lyr_AOITasking_1.set('fieldLabels', {'ID': 'no label', 'AREA': 'inline label', });
+lyr_AOITasking_1.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });
